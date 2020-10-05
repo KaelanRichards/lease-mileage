@@ -1,23 +1,13 @@
 <template>
-  <BaseInput
-    inputType="text"
-    labelName="Enter your current mileage"
-    inputPlaceholder="current mileage..."
-    v-model="currentMileage"
-  />
-  <BaseButton>{{ buttonText }}</BaseButton>
+  <div>
+    hello
+  </div>
 </template>
 
 <script>
-import BaseInput from "./components/BaseInput.vue";
-import BaseButton from "./components/BaseButton.vue";
-
 export default {
   name: "App",
-  components: {
-    BaseInput,
-    BaseButton,
-  },
+  components: {},
   data() {
     return {
       buttonText: "Next",
