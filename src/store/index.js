@@ -1,11 +1,13 @@
-import Vue from "vue";
-import Vuex from "vuex";
+
+import { createStore, createLogger } from 'vuex'
 import leaseInfo from "./modules/lease-info";
 
-Vue.use(Vuex);
+const debug = process.env.NODE_ENV !== 'production'
 
-export default new Vuex.Store({
+export const store = createStore({
   modules: {
-    leaseInfo,
+    leaseInfo
   },
-});
+  strict: debug,
+  plugins: debug ? [createLogger()] : []
+})

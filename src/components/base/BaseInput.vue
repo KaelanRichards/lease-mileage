@@ -1,9 +1,7 @@
 <template>
-  <h3>LEASE CALCS</h3>
-
   <div>
     <form>
-      <label>How many miles on your vehicle?</label>
+      <label>{{ labelName }}</label>
       <input
         :type="inputType"
         :placeholder="inputPlaceholder"
@@ -30,11 +28,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
