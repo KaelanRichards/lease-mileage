@@ -1,0 +1,62 @@
+
+export default class LeaseCalculations {
+    dateDifferencer(date1, date2, interval) {
+        var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
+        date1 = new Date(date1);
+        date2 = new Date(date2);
+        var timediff = date2 - date1;
+        if (isNaN(timediff)) return NaN;
+        switch (interval) {
+            case "years": return date2.getFullYear() - date1.getFullYear();
+            case "months": return (
+                ( date2.getFullYear() * 12 + date2.getMonth() )
+                -
+                ( date1.getFullYear() * 12 + date1.getMonth() )
+            );
+            case "weeks"  : return Math.round(timediff / week);
+            case "days"   : return Math.round(timediff / day); 
+            case "hours"  : return Math.round(timediff / hour); 
+            case "minutes": return Math.round(timediff / minute);
+            case "seconds": return Math.round(timediff / second);
+            default: return undefined;
+        }
+    }
+    
+    calculateTotalMiles(milesPerYear, lengthOfLeaseYears) {
+        const totalMiles = milesPerYear * lengthOfLeaseYears 
+        return (isNaN(lengthOfLeaseYears) || isNaN(milesPerYear) || isNaN(totalMiles)) ? NaN : totalMiles;
+    
+    }
+    
+    milesDifferencer(totalMiles, currentMileage) {
+        const milesRemaining = currentMileage - totalMiles;
+        return (isNaN(totalMiles) || isNaN(currentMileage) || isNaN(milesRemaining)) ? NaN : milesRemaining;
+    }
+
+    calculateTotalMonths(LengthOfLeaseYears) {
+        const totalMonths = LengthOfLeaseYears * 12;
+        return (isNaN(LengthOfLeaseYears) || isNaN(totalMonths)) ? NaN : totalMonths;
+    }
+    
+    calculateMilesPerMonth(totalMonths, totalMiles){
+        const milesPerMonth = totalMiles / totalMonths;
+        return (isNaN(totalMonths) || isNaN(totalMiles) || isNaN(milesPerMonth)) ? NaN : milesPerMonth;
+    
+    }
+    
+    calculateCurrentMonth(startDate){
+        const currentMonth = this.dateDifferencer(startDate, Date.now(), "months");
+        return (isNaN(currentMonth) || isNaN(startDate) ) ? NaN : currentMonth;
+    }
+    
+    calculateAllottedMiles(currentMonth, milesPerMonth){
+        const allottedMiles = currentMonth * milesPerMonth;
+        return (isNaN(allottedMiles) || isNaN(currentMonth) || isNaN(milesPerMonth)) ? NaN : allottedMiles;
+    }
+    
+    calculatedMileScore(currentMiles, allottedMiles) {
+        const milesScore = allottedMiles - currentMiles
+        return (isNaN(currentMiles) || isNaN(allottedMiles) || isNaN(milesScore)) ? NaN : milesScore;
+    }
+}
+

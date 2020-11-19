@@ -4,10 +4,8 @@
       <label>{{ labelName }}</label>
       <input
         :type="inputType"
-        :placeholder="inputPlaceholder"
-        :value="inputValue"
-        v-model="value"
-      />
+        :value="value" 
+        @input="$emit('input', $event.target.value)" />
     </form>
   </div>
 </template>
@@ -18,13 +16,7 @@ export default {
   props: {
     inputType: String,
     labelName: String,
-    inputPlaceholder: String,
-    inputValue: String,
-  },
-  data() {
-    return {
-      value: this.inputValue,
-    };
+    value: String,
   },
 };
 </script>
